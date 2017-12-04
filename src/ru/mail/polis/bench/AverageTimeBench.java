@@ -35,6 +35,7 @@ import ru.mail.polis.sort.SortUtils;
 @Fork(1)
 public class AverageTimeBench {
 
+
     int[][] data;
     int[] curr;
     int index;
