@@ -2,15 +2,27 @@ package ru.mail.polis.sort;
 
 //import java.util.Comparator;
 
+import java.util.Comparator;
+
 public class MergeSort<T> extends AbstractSortOnComparisons<T> {
 
+    public MergeSort(Comparator<? super T> c){
+
+        this.comparator = c;
+    }
+
+    public MergeSort(){
+
+    }
+
     @Override
+    @SuppressWarnings("unchecked")
     public void sort(T[] array) {
-        T[] t = null;
+        T[] t = (T[]) new Object[array.length];
         mergeSort(array,t,0, array.length - 1);
     }
 
-    public void mergeSort(T[] a, T[] t, int left, int right) {
+    private void mergeSort(T[] a, T[] t, int left, int right) {
         if (right <= left) return;
         int mid = (left + right) / 2;
         mergeSort(a, t, left, mid);

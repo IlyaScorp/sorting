@@ -1,11 +1,18 @@
 package ru.mail.polis.sort;
 
 
+import java.util.Comparator;
+
 public class QuickSort1<T> extends AbstractSortOnComparisons<T>{
 
     InsertSort instance = null;
 
-    QuickSort1(){
+    public QuickSort1(Comparator<? super T> c){
+        this.comparator = c;
+        this.instance = new InsertSort();
+    }
+
+    public QuickSort1(){
         this.instance = new InsertSort();
     }
 
@@ -37,24 +44,4 @@ public class QuickSort1<T> extends AbstractSortOnComparisons<T>{
         quickSort(array,0, array.length - 1);
     }
 
-    class InsertSort{
-
-        public  void sort(T[] arr){
-            T curr;
-            int j;
-            for (int i = 1; i < arr.length; i++) {
-                curr = arr[i];
-                for ( j = i; j > 0 && lesser(curr,arr[j - 1]); j--) {
-                    arr[j] = arr[j - 1];
-                }
-                if (j != i) {
-                    arr[j] = curr;
-                }
-            }
-        }
     }
-
-
-
-
-}
